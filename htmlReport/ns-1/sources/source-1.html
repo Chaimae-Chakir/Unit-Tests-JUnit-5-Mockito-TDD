@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > DemoUtils</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.test</a>
+</div>
+
+<h1>Coverage Summary for Class: DemoUtils (com.example.test)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DemoUtils</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (13/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.test;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="fc">&nbsp;public class DemoUtils {</b>
+<b class="fc">&nbsp;    private String s1 = &quot;academy&quot;;</b>
+<b class="fc">&nbsp;    private String s2 = &quot;academy duplicate&quot;;</b>
+<b class="fc">&nbsp;    private List&lt;String&gt; list = List.of(&quot;c&quot;, &quot;h&quot;, &quot;a&quot;, &quot;i&quot;, &quot;m&quot;, &quot;a&quot;, &quot;e&quot;);</b>
+&nbsp;
+&nbsp;    public String getS1() {
+<b class="fc">&nbsp;        return s1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getS2() {
+<b class="fc">&nbsp;        return s2;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Boolean isGreater(int s1, int s2) {
+<b class="fc">&nbsp;        return s1 &gt; s2;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;String&gt; getList() {
+<b class="fc">&nbsp;        return list;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void checkTimeout() throws InterruptedException {
+<b class="fc">&nbsp;        System.out.println(&quot;I&#39;m going to sleep&quot;);</b>
+<b class="fc">&nbsp;        Thread.sleep(2000);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Sleeping over&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int throwAndDoesnotThrow(int a) throws Exception {
+<b class="fc">&nbsp;        if (a &lt; 0) throw new Exception(&quot;a is less than 0&quot;);</b>
+<b class="fc">&nbsp;        return a;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-08-01 16:56</div>
+</div>
+</body>
+</html>
