@@ -1,6 +1,8 @@
 package com.example.tdd;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -37,5 +39,13 @@ public class FizzBuzzTest {
     @DisplayName("Not Divisible by Three Or Five")
     void shouldReturnFizzBuzzIfNotDivisibleByThreeOrFive() {
         assertEquals("7", FizzBuzz.compute(7), "should returns 7");
+    }
+
+
+    @DisplayName("Testing with small data file")
+    @ParameterizedTest(name = "Input: {0} → Expected: {1}")
+    @CsvFileSource(resources = "/small-test-data.csv", numLinesToSkip = 1)
+    void testFizzBuzzFromCsv(int input, String expected) {
+        assertEquals(expected, FizzBuzz.compute(input));
     }
 }

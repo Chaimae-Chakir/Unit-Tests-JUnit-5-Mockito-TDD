@@ -1,0 +1,11 @@
+input,expected
+1,1
+3,Fizz
+5,Buzz
+6,Fizz
+10,Buzz
+15,FizzBuzz
+30,FizzBuzz
+7,7
+13,13
+45,FizzBuzz
