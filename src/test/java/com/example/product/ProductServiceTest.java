@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest(classes = TestApplication.class)
 public class ProductServiceTest {
@@ -29,5 +29,6 @@ public class ProductServiceTest {
         when(productRepository.findById(1L)).thenReturn(Optional.of(product));
         Product result = productService.getProductById(1L);
         assertEquals(result, product);
+        verify(productRepository, times(1)).findById(1L);
     }
 }
