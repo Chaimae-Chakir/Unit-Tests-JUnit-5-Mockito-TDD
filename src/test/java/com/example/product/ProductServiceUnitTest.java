@@ -1,6 +1,6 @@
 package com.example.product;
 
-import com.example.test.TestApplication;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -13,8 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest(classes = TestApplication.class)
-public class ProductServiceTest {
+//@SpringBootTest(classes = TestApplication.class)
+@SpringBootTest(classes = ProductServiceUnitTest.class)
+public class ProductServiceUnitTest {
     @Mock
 //    @MockitoBean
     private ProductRepository productRepository;
@@ -22,13 +23,19 @@ public class ProductServiceTest {
 //    @Autowired
     private ProductService productService;
 
-    @Test
-    @DisplayName("Return product By Id")
-    void shouldReturnProductById() {
-        Product product = new Product();
+    private Product product;
+
+    @BeforeEach
+    void setUp() {
+        product = new Product();
         product.setId(1L);
         product.setName("Laptop");
         product.setPrice(5400.0);
+    }
+
+    @Test
+    @DisplayName("Return product By Id")
+    void shouldReturnProductById() {
         when(productRepository.findById(1L))
                 .thenThrow(new RuntimeException())
                 .thenReturn(Optional.of(product));
