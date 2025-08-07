@@ -3,6 +3,7 @@ package com.example.product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,5 +19,9 @@ public class ProductService {
     public boolean checkProductIfNull(Long id) {
         Optional<Product> byId = productRepository.findById(id);
         return byId.isPresent();
+    }
+
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
     }
 }
