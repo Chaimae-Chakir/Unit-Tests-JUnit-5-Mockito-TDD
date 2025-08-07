@@ -1,33 +1,32 @@
 package com.example.product;
 
 import com.example.TestApplication;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.TestPropertySource;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestApplication.class)
+@TestPropertySource("/application.yml")
 public class ProductServiceIntegrationTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Autowired
     private ProductService productService;
 
-    @Before
+    @BeforeEach
     public void setup() {
         jdbcTemplate.execute("DELETE FROM product");
         jdbcTemplate.execute("INSERT INTO product (name, price) VALUES ('TestProduct', 99.99)");
     }
 
     @Test
-    @DisplayName("Should retrieve product by ID from database")
+    @DisplayName("Should return product with correct name and price when ID exists")
     public void testGetProductById() {
         Long id = jdbcTemplate.queryForObject("SELECT id FROM product WHERE name = 'TestProduct'", Long.class);
         Product product = productService.getProductById(id);
@@ -37,16 +36,16 @@ public class ProductServiceIntegrationTest {
     }
 
     @Test
-    @DisplayName("Should check if product exists by ID")
+    @DisplayName("Should return true if product exists and false otherwise")
     public void testCheckProductIfNull() {
         Long id = jdbcTemplate.queryForObject("SELECT id FROM product WHERE name = 'TestProduct'", Long.class);
         assertTrue(productService.checkProductIfNull(id));
         assertFalse(productService.checkProductIfNull(9999L));
     }
 
-    @Test(expected = RuntimeException.class)
-    @DisplayName("Should throw exception when product not found by ID")
+    @Test
+    @DisplayName("Should throw RuntimeException when product is not found")
     public void testGetProductByIdNotFound() {
-        productService.getProductById(9999L);
+        assertThrows(RuntimeException.class, () -> productService.getProductById(9999L));
     }
 }

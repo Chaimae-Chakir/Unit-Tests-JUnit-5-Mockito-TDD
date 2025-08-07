@@ -28,7 +28,7 @@
     </scm>
     <properties>
         <java.version>17</java.version>
-        <test.version>4.13.2</test.version>
+        <test.version>5.13.0</test.version>
     </properties>
     <dependencies>
         <dependency>
@@ -43,8 +43,8 @@
         </dependency>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
             <version>${test.version}</version>
             <scope>test</scope>
         </dependency>
